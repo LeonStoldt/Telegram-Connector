@@ -36,11 +36,12 @@
   "source": "telegramConnector",  
   "destination": "WeatherService",  
   "timestamp": "2019-11-11 2:57pm UTC",  
-  "command": {
-			  "city" : "Hamburg",
-			  "country_code" : "DE",
-			  "forecast" : false
-			  }  
+  "command": 
+    {
+        "city" : "Hamburg",
+        "country_code" : "DE",
+        "forecast" : false
+    }  
 }
 ```
 
