@@ -1,4 +1,4 @@
-package de.cloud.fundamentals.TelegramConnector;
+package de.cloud.fundamentals.telegramconnector;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
@@ -18,10 +18,9 @@ public class TelegramService extends TelegramBot {
     @Autowired
     public TelegramService() {
         super(TOKEN);
-        start();
     }
 
-    private void start() {
+    public void start() {
         setUpdatesListener(list -> {
             list.forEach(this::onUpdateReceived);
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
@@ -39,7 +38,7 @@ public class TelegramService extends TelegramBot {
 
             String result;
 
-            switch (Command.valueOf(messageText)) {
+            switch (Command.of(messageText)) {
                 case START:
                     result = USER_FEEDBACK.format("message.start", name);
                     break;

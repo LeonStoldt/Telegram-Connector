@@ -1,4 +1,4 @@
-package de.cloud.fundamentals.TelegramConnector;
+package de.cloud.fundamentals.telegramconnector;
 
 import java.text.MessageFormat;
 import java.util.MissingResourceException;

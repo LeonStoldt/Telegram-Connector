@@ -1,4 +1,4 @@
-package de.cloud.fundamentals.TelegramConnector;
+package de.cloud.fundamentals.telegramconnector;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
