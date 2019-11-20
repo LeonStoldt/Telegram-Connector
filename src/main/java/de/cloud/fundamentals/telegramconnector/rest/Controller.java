@@ -1,5 +1,6 @@
-package de.cloud.fundamentals.telegramconnector;
+package de.cloud.fundamentals.telegramconnector.rest;
 
+import de.cloud.fundamentals.telegramconnector.telegram.TelegramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

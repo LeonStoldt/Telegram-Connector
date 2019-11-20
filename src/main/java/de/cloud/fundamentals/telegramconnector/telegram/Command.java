@@ -1,4 +1,4 @@
-package de.cloud.fundamentals.telegramconnector;
+package de.cloud.fundamentals.telegramconnector.telegram;
 
 import java.util.Arrays;
 
