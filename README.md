@@ -35,7 +35,8 @@
 {  
   "source": "telegramConnector",  
   "destination": "WeatherService",  
-  "timestamp": "2019-11-11 2:57pm UTC",  
+  "timestamp": "2019-11-11 2:57pm UTC", 
+  "chatId": 1337, 
   "command": 
     {
         "city" : "Hamburg",
@@ -54,6 +55,7 @@
   "destination": "telegramConnector",  
   "status_code": 200,  
   "timestamp": "2019-11-11 2:58pm UTC",  
+  "chatId": 1337, 
   "message": "This output message will be displayed by telegram [Telegram Markdown Support]"
 }
 ```
