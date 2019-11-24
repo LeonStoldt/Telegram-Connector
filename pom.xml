@@ -15,6 +15,7 @@
 	<description>this service is an user-request-driven service linked to the telegram api which is connected to multiple microservices</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 	</properties>
 
@@ -78,6 +79,11 @@
 			<version>42.2.8</version>
 		</dependency>
 
+		<dependency>
+			<groupId>de.cloud.fundamentals</groupId>
+			<artifactId>sharedClasses</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

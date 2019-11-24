@@ -35,14 +35,10 @@
 {  
   "source": "telegramConnector",  
   "destination": "WeatherService",  
-  "timestamp": "2019-11-11 2:57pm UTC", 
+  "created": "2019-11-11 2:57pm UTC", 
+  "expiration": "2019-11-11 3:02pm UTC", 
   "chatId": 1337, 
-  "command": 
-    {
-        "city" : "Hamburg",
-        "country_code" : "DE",
-        "forecast" : false
-    }  
+  "message": "message from telegram"
 }
 ```
 
@@ -52,9 +48,9 @@
 ``` json
 {  
   "source": "WeatherService",  
-  "destination": "telegramConnector",  
-  "status_code": 200,  
-  "timestamp": "2019-11-11 2:58pm UTC",  
+  "destination": "telegramConnector", 
+  "created": "2019-11-11 2:58pm UTC",
+  "expiration": "2019-11-11 3:02pm UTC",
   "chatId": 1337, 
   "message": "This output message will be displayed by telegram [Telegram Markdown Support]"
 }
