@@ -1,25 +1,21 @@
 package de.cloud.fundamentals.telegramconnector.rest.services;
 
-import java.net.URI;
-
 public enum ResponseService {
-    NORDBAHN("nordbahnService", "https://localhost:8443/api"); // change to load balancer domain later
-
+    NORDBAHN("nordbahnService", "http://localhost:8085"); // change to load balancer domain later
 
     private final String name;
-    private final URI uri;
+    private final String baseUri;
 
-
-    ResponseService(String name, String uri) {
+    ResponseService(String name, String baseUri) {
         this.name = name;
-        this.uri = URI.create(uri);
+        this.baseUri = baseUri;
     }
 
     public String getName() {
         return name;
     }
 
-    public URI getUri() {
-        return uri;
+    public String getBaseUri() {
+        return baseUri;
     }
 }

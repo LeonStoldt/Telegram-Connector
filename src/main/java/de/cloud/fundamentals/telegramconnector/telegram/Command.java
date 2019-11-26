@@ -1,6 +1,6 @@
 package de.cloud.fundamentals.telegramconnector.telegram;
 
-import userfeedback.I18n;
+import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ public enum Command {
     NB("nb", "description.command.nb"),
     NO_COMMAND("", "");
 
-    private static final I18n USER_FEEDBACK = new I18n("userFeedback");
+    private static final I18n USER_FEEDBACK = new I18n();
 
     private final String keyWord; //change to keywords later
     private final String descriptionKey;

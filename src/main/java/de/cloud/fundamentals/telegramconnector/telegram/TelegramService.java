@@ -10,15 +10,13 @@ import com.pengrad.telegrambot.request.SendMessage;
 import de.cloud.fundamentals.telegramconnector.bo.Answer;
 import de.cloud.fundamentals.telegramconnector.bo.Client;
 import de.cloud.fundamentals.telegramconnector.persistence.dao.ClientDao;
-import de.cloud.fundamentals.telegramconnector.rest.Controller;
 import de.cloud.fundamentals.telegramconnector.rest.RequestCallback;
 import de.cloud.fundamentals.telegramconnector.rest.services.ResponseService;
-import dto.Request;
+import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import userfeedback.I18n;
 
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
@@ -27,7 +25,7 @@ import java.util.Optional;
 public class TelegramService extends TelegramBot {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TelegramService.class);
-    private static final I18n USER_FEEDBACK = new I18n("userFeedback");
+    private static final I18n USER_FEEDBACK = new I18n();
     private static final String TOKEN = System.getenv().get("TELEGRAM_API_TOKEN");
 
     private final ClientDao dao;
@@ -40,7 +38,7 @@ public class TelegramService extends TelegramBot {
     }
 
     public void setCallback(RequestCallback callback) {
-        this.callback = callback; //change
+        this.callback = callback;
     }
 
     public void start() {
@@ -118,8 +116,8 @@ public class TelegramService extends TelegramBot {
                 break;
             case NB:
                 ResponseService service = ResponseService.NORDBAHN;
-                Request request = new Request(Controller.TELEGRAM_CONNECTOR, service.getName(), chat.id(), messageText);
-                callback.postRequest(request, service.getUri());
+                String params = messageText.substring(messageText.indexOf(Command.NB.getKeyWord()));
+                callback.postRequest(service.getBaseUri(), chat.id(), params);
                 answer.setShouldSend(false);
                 break;
             default:

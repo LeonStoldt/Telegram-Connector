@@ -1,12 +1,13 @@
 package de.cloud.fundamentals.telegramconnector.bo;
 
-import dto.Response;
+import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 
 public class Answer {
 
     private Long chatId;
     private String message;
     private boolean shouldSend = true;
+    private static final I18n USER_FEEDBACK = new I18n();
 
     public Answer() {
     }
@@ -16,8 +17,8 @@ public class Answer {
         this.message = message;
     }
 
-    public Answer(Response response) {
-        this(response.getChatId(), response.getMessage());
+    public static Answer error(Long chatId) {
+        return new Answer(chatId, USER_FEEDBACK.get("error.wrong-status-code"));
     }
 
     public Long getChatId() {
