@@ -12,6 +12,7 @@ public enum Command {
     DELETE("/delete", "description.command.delete"),
     INFO("/info", "description.command.info"),
     NB("nb", "description.command.nb"),
+    SHORTEN_URL("/shorturl", "description.command.shorten-url"),
     NO_COMMAND("", "");
 
     private static final I18n USER_FEEDBACK = new I18n();

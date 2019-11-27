@@ -1,7 +1,8 @@
 package de.cloud.fundamentals.telegramconnector.rest.services;
 
 public enum ResponseService {
-    NORDBAHN("nordbahnService", "http://localhost:8085"); // change to load balancer domain later
+    NORDBAHN("nordbahnService", "http://localhost:8085"),
+    URL_SHORTENER("urlShortener", "http://localhost:8090"); // change to load balancer domain later
 
     private final String name;
     private final String baseUri;

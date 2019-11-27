@@ -79,3 +79,52 @@
 > -	https://rapidapi.com/systran/api/systran-io-translation-and-nlp
 > -	https://dialogflow.com/
 > -	https://wit.ai/	
+
+
+## Wie binde ich weitere Services an den Telegramconnector an?
+1.  Microservice (z.B. Spring Boot Service) aufsetzen und mit der gewünschten Funktion (z.B. Api-Anfrage) ausstatten
+2.  Rest-Controller erstellen nach folgendem Schema:
+    ``` java
+    @RestController
+    public class Controller {
+    
+        // handles api requests or provides features
+        // input - message from telegram without keyword
+        // output - message to response user request
+        private final ApiService apiService;
+    
+        @Autowired
+        public Controller(ApiService apiService) {
+            this.apiService = apiService;
+        }
+    
+        // (optional) to check status of service via browser
+        @ResponseStatus(HttpStatus.OK)
+        @GetMapping(value = "/", produces = JSON)
+        public String getStatus() {
+            return "xxxService is active.";
+        }
+    
+        @PostMapping("/api") //define endpoint
+        public ResponseEntity<String> receiveRequest(@RequestBody String message) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(apiService.getResponseMessage(message));
+        }
+        //return ResponseEntity<String> with body filled with the response-message
+    }
+    ```
+3. Die folgenden Anpassungen müssen im TelegramConnectorvorgenommen werden:
+    -   `ResponseService` Eintrag hinzufügen: `SERVICENAME("serviceName", "http://localhost:[SERVICE_PORT]")`
+    -   `Command` Eintrag mit Kommando hinzufügen `COMMAND("/command", "description.command.serviceName"),`
+    -   `userFeedback.properties` Beschreibung des Befehls eintragen unter `# command descriptions` (Muster: `description.command.serviceName=[Beschreibung des Befehls]`)
+    -   `TelegramService` den Befehl abfragen und request an der Service implementieren Bsp.:
+        ``java
+        [...]
+        case SHORTEN_URL:
+                        ResponseService serviceNameService = ResponseService.SERVICE_NAME;
+                        callback.postRequest(serviceNameService.getBaseUri(), chat.id(), getParams(messageText, Command.SERVICE_NAME));
+                        answer.setShouldSend(false);
+                        break;
+        [...]
+        ```

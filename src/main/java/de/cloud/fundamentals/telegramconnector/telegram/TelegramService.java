@@ -115,14 +115,22 @@ public class TelegramService extends TelegramBot {
                 answer.setMessage(getInfoMessage(chat));
                 break;
             case NB:
-                ResponseService service = ResponseService.NORDBAHN;
-                String params = messageText.substring(messageText.indexOf(Command.NB.getKeyWord()));
-                callback.postRequest(service.getBaseUri(), chat.id(), params);
+                ResponseService nordbahnService = ResponseService.NORDBAHN;
+                callback.postRequest(nordbahnService.getBaseUri(), chat.id(), getParams(messageText, Command.NB));
+                answer.setShouldSend(false);
+                break;
+            case SHORTEN_URL:
+                ResponseService urlShortenerService = ResponseService.URL_SHORTENER;
+                callback.postRequest(urlShortenerService.getBaseUri(), chat.id(), getParams(messageText, Command.SHORTEN_URL));
                 answer.setShouldSend(false);
                 break;
             default:
                 answer.setMessage(USER_FEEDBACK.get("answer.default"));
         }
+    }
+
+    private String getParams(String messageText, Command command) {
+        return messageText.substring(messageText.indexOf(command.getKeyWord()));
     }
 
     private boolean isActiveClient(Long chatId) {
