@@ -30,9 +30,9 @@ public class ClientDao {
     }
 
     public void changeActiveState(Long chatId) {
-        getClientById(chatId).ifPresent(entity -> {
-            entity.setActive(!entity.isActive());
-            persist(entity);
+        getClientById(chatId).ifPresent(client -> {
+            client.setActive(!client.isActive());
+            persist(client);
         });
         LOGGER.info("changed active state of client {}", chatId);
     }

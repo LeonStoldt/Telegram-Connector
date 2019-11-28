@@ -34,7 +34,7 @@ public class ClientEntity {
 
     public ClientEntity(Client client) {
         this.chatId = client.getChatId();
-        this.active = true;
+        this.active = client.isActive();
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
         this.userName = client.getUserName();
