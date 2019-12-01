@@ -38,7 +38,8 @@ class CommandTest {
                 "- /stop (Beim Bot abmelden)\n" +
                 "- /delete (Gespeicherte Daten löschen lassen)\n" +
                 "- /info (Ausgeben der gesamten gespeicherten Dateien des Users)\n" +
-                "- nb (Auskunft der aktuellen Fahrzeiten der Nordbahn für einen bestimmten Bahnhof)";
+                "- /nb | /nordbahn (Auskunft der aktuellen Fahrzeiten der Nordbahn für einen bestimmten Bahnhof)\n" +
+                "- /shorten | /shorturl (Kürzen einer Url, die hinter dem Befehl angegeben wird)";
         assertEquals(actual, expected);
     }
 }

@@ -9,6 +9,7 @@ import de.cloud.fundamentals.telegramconnector.rest.services.ResponseService;
 import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -105,8 +106,11 @@ public class ServiceDistributor {
     }
 
     private String getParams(String messageText, Command command) {
-        String keyWord = command.getKeyWord();
-        int indexEndOfCommand = messageText.indexOf(keyWord) + keyWord.length();
-        return messageText.substring(indexEndOfCommand);
+        return command.getKeyWords()
+                .stream()
+                .filter(messageText::contains)
+                .findFirst()
+                .map(keyword -> messageText.substring(messageText.indexOf(keyword) + keyword.length()))
+                .orElse(messageText);
     }
 }

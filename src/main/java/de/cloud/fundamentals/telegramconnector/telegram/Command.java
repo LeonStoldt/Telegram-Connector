@@ -3,38 +3,45 @@ package de.cloud.fundamentals.telegramconnector.telegram;
 import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public enum Command {
-    START("/start", "description.command.start"),
-    HELP("/hilfe", "description.command.help"),
-    STOP("/stop", "description.command.stop"),
-    DELETE("/delete", "description.command.delete"),
-    INFO("/info", "description.command.info"),
-    NB("nb", "description.command.nb"),
-    SHORTEN_URL("/shorturl", "description.command.shorten-url"),
+    START("description.command.start", "/start"),
+    HELP("description.command.help", "/hilfe"),
+    STOP("description.command.stop", "/stop"),
+    DELETE("description.command.delete", "/delete"),
+    INFO("description.command.info", "/info"),
+    NB("description.command.nb", "/nb", "/nordbahn"),
+    SHORTEN_URL("description.command.shorten-url", "/shorten", "/shorturl"),
     NO_COMMAND("", "");
 
     private static final I18n USER_FEEDBACK = new I18n();
 
-    private final String keyWord; //change to keywords later
     private final String descriptionKey;
+    private final List<String> keyWords;
 
-    Command(String keyWord, String descriptionKey) {
-        this.keyWord = keyWord;
+    Command(String descriptionKey, String... keyWords) {
         this.descriptionKey = descriptionKey;
+        this.keyWords = Arrays.asList(keyWords);
     }
 
-    public String getKeyWord() {
-        return keyWord;
+    public List<String> getKeyWords() {
+        return keyWords;
     }
 
     public static Command of(String message) {
         return Arrays
                 .stream(values())
-                .filter(value -> message.contains(value.getKeyWord()))
+                .filter(command -> isCommandInList(message, command.getKeyWords()))
                 .findFirst()
                 .orElse(NO_COMMAND);
+    }
+
+    private static boolean isCommandInList(String message, List<String> keywordList) {
+        return keywordList
+                .stream()
+                .anyMatch(message::contains);
     }
 
     public static String getCommandList() {
@@ -46,6 +53,6 @@ public enum Command {
 
     @Override
     public String toString() {
-        return "- " + keyWord + " (" + USER_FEEDBACK.get(descriptionKey) + ")";
+        return "- " + String.join(" | ", keyWords) + " (" + USER_FEEDBACK.get(descriptionKey) + ")";
     }
 }
