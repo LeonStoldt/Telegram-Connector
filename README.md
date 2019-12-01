@@ -71,7 +71,6 @@
 -	Nordbahn (**Leon**)
 -	Weather Service (**Tim**)
 -	[Tankpreise]([https://creativecommons.tankerkoenig.de/](https://creativecommons.tankerkoenig.de/)) (**Tim**)
--	[NFL Service](https://api.nfl.com) (**Jan**)
 -	[Deutsche Bahn]([https://developer.deutschebahn.com/store/](https://developer.deutschebahn.com/store/)) (**Dominik und Leon**)
 -	[Google Translate]([https://cloud.google.com/translate/docs/](https://cloud.google.com/translate/docs/)) (**Sebastian**)
 
@@ -82,8 +81,8 @@
 
 
 ## Wie binde ich weitere Services an den Telegramconnector an?
-1.  Microservice (z.B. Spring Boot Service) aufsetzen und mit der gewünschten Funktion (z.B. Api-Anfrage) ausstatten
-2.  Rest-Controller erstellen nach folgendem Schema:
+1.  Microservice (z.B. Spring Boot Service) aufsetzen (egal welche Programmiersprache) und mit der gewünschten Funktion (z.B. Api-Anfrage) ausstatten
+2.  Für java z.B. folgenden Rest-Controller erstellen:
     ``` java
     @RestController
     public class Controller {
@@ -114,17 +113,7 @@
         //return ResponseEntity<String> with body filled with the response-message
     }
     ```
-3. Die folgenden Anpassungen müssen im TelegramConnectorvorgenommen werden:
-    -   `ResponseService` Eintrag hinzufügen: `SERVICENAME("serviceName", "http://localhost:[SERVICE_PORT]")`
-    -   `Command` Eintrag mit Kommando hinzufügen `COMMAND("/command", "description.command.serviceName"),`
+3. Die folgenden Anpassungen müssen im TelegramConnector vorgenommen werden:
+    -   `Command` Eintrag mit Kommando hinzufügen `COMMAND("description.command.serviceName", "/command"),`
+    -   `ResponseService` Eintrag hinzufügen: `SERVICENAME("http://localhost:[SERVICE_PORT]", Command.COMMAND)`
     -   `userFeedback.properties` Beschreibung des Befehls eintragen unter `# command descriptions` (Muster: `description.command.serviceName=[Beschreibung des Befehls]`)
-    -   `TelegramService` den Befehl abfragen und request an der Service implementieren Bsp.:
-        ``java
-        [...]
-        case SHORTEN_URL:
-                        ResponseService serviceNameService = ResponseService.SERVICE_NAME;
-                        callback.postRequest(serviceNameService.getBaseUri(), chat.id(), getParams(messageText, Command.SERVICE_NAME));
-                        answer.setShouldSend(false);
-                        break;
-        [...]
-        ```
