@@ -1,4 +1,3 @@
-
   
 # Hausarbeit Cloud Computing   
 > Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms    
@@ -40,7 +39,14 @@ Zeit sparen, weil ich die Abfragen schneller durchführen kann. -->
 Bsp. Abfahrt ab Elmshorn. Hier müsste ich erst die DB App raussuchen, dann auf die Abfahrtseite navigieren, dann Elmshorn eingeben --> etc
 
 Es geht wirklich darum, Aufgaben/Probleme, die häufig auftreten zu vereinfachen.
-Ziel ist die kurze und präzise Beantwortung von Fragen bzw. Lieferung von Informationen an den anfragenden Nutzer  
+Ziel ist die kurze und präzise Beantwortung von Fragen bzw. Lieferung von Informationen an den anfragenden Nutzer
+
+Device Unabhängigkeit (Mobile IOS and Android/Tablet/Desktop)
+--> Web Anwendung (telegram ist auch überall als eine Webapplication aufrufbar)
+
+ Eine Weboberfläche auf der der User seine entsprechenden Services auswählen kann (natürlich nur alle, die bereits Implemertiert worden sind)
+ 
+Außerdem eventuell ein Dashboard mit der History und/oder einer einer Statistik/Logging der Anfragen pro User.  Oder  das ich sehen kann, welcher User wieviele Anfragen auf welchem Service gemacht hat??
 
 **technisch:**
    -  hohe Verfügbarkeit  
