@@ -1,7 +1,5 @@
-
-  
-# Hausarbeit Cloud Computing 
-> Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms 
+<!-- # Hausarbeit Cloud Computing 
+> Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  -->
  ## Einleitung 
  #### Einführung in den Kontext: 
 Um das Projekt und den Nutzen am Besten zu präsentieren, gehen wir von folgendem realistischen Fallbeispiel/Szenario aus: 
@@ -27,10 +25,11 @@ Wann fährt die nächste Bahn ab Elmshorn? Um das herauszufinden müssen wir zun
 
 Als Basis für unsere Services dient Telegram. Der Cloud-Messenger ist mit über 200 Millionen aktiven Usern eine bekannte WhatsApp Alternative. [^1] Die native Telegram App lässt sich auf  allen gängigen Plattformen installieren oder auf Wunsch auch als Web-App über [web.telegram.org](https://web.telegram.org/) aufrufen.  Eine Device Unabhängigkeit ist dementsprechend gewährleistet. 
 
-  -Speicherplatzprobleme --> Nur eine App installiert
-Außerdem eventuell ein Dashboard mit der History und/oder einer einer Statistik/Logging der Anfragen pro User.  Oder  das ich sehen kann, welcher User wieviele Anfragen auf welchem Service gemacht hat??
+Auch wenn Speicherplatzmangel eigentlich der Vergangenheit angehören sollte, gibt es immernoch User, die überwiegend über Speichermangel auf dem Smartphone klagen. Der Telegram- Bot minimiert die Anzahl der notwendigen App Installationen. Die besondere Lightweight Variante sorgt zudem für einen aufgeräumten Screen und löst den App Wahn.
+
 
 [^1]:https://telegram.org/blog/200-million
+---
 **technisch:**
 Unsere Applikation basiert auf einer Micoroservice-Archiktekur. Die Vorteile gegenüber einem Monolithen spielen uns in die Hände. 
 Wenn sich Apis ändern, dann funktioniert ein servie nicht --> Kann seperat angepasst werden + seperates DEPLOYMENT!!!! (vs. Monolith)
@@ -101,6 +100,9 @@ Testing:
 CI: 
 - gitlab CI für einzelne Projekte 
 - weitere CI? (Docker in CI einbinden?) 
+## offene Punkte + Verbesserungsmöglichkeiten
+- Außerdem eventuell ein Dashboard mit der History und/oder einer einer Statistik/Logging der Anfragen pro User.  Oder  das ich sehen kann, welcher User wieviele Anfragen auf welchem Service gemacht hat??
+- Auswahl der benötigten Services + weitere Einstellungsmöglichkeiten
   
 ## Evaluation der Architektur 
  ## Fazit
