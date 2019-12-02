@@ -1,7 +1,10 @@
 package de.cloud.fundamentals.telegramconnector.rest;
 
+import com.pengrad.telegrambot.model.Message;
+import de.cloud.fundamentals.telegramconnector.rest.dto.Answer;
+
 public interface RequestCallback {
 
-    void postRequest(String serviceBaseUri, Long chatId, String message);
+    Answer collectResponse(Message message);
 
 }

@@ -1,24 +1,22 @@
-package de.cloud.fundamentals.telegramconnector.bo;
+package de.cloud.fundamentals.telegramconnector.rest.dto;
 
 import de.cloud.fundamentals.telegramconnector.userfeedback.I18n;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
 
     private Long chatId;
     private String message;
-    private boolean shouldSend = true;
     private static final I18n USER_FEEDBACK = new I18n();
 
-    public Answer() {
-    }
-
-    public Answer(Long chatId, String message) {
+    public Answer(Long chatId) {
         this.chatId = chatId;
-        this.message = message;
+        this.message = USER_FEEDBACK.get("error.wrong-status-code");
     }
 
     public static Answer error(Long chatId) {
-        return new Answer(chatId, USER_FEEDBACK.get("error.wrong-status-code"));
+        return new Answer(chatId);
     }
 
     public Long getChatId() {
@@ -35,13 +33,5 @@ public class Answer {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public boolean isShouldSend() {
-        return shouldSend;
-    }
-
-    public void setShouldSend(boolean shouldSend) {
-        this.shouldSend = shouldSend;
     }
 }
