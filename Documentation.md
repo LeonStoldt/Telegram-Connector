@@ -67,7 +67,7 @@ To use this, you don't need to know anything about how our MTProto encryption pr
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und ist eine attraktive Alternative zur beliebten Virtualisierung . Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich docker installieren.[^2] Hinter docker steht die Technik der Containerisierung. Das Prinziz der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das reine Entwicklen am Code.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebsystem, auf dem alle Container laufen und deutlich weniger Ressourcen werden verwendet. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
-In den Container können unsere Services isoliert und Unabhängig laufen. Ein Service kann jederzeit pausiert, bearbeitet oder deployed werden, ohne dass andere Services davon etwas mitbekommen.[^3]
+In den Container können unsere Services isoliert und Unabhängig laufen. Ein Service kann jederzeit pausiert, bearbeitet oder deployed werden, ohne dass andere Services davon etwas mitbekommen.[^3] Besonders angenehm sind die Container bei der Verwendung unterschiedlicher Programmiersprachen und Versionen. Unsere Services wurden überwiegend mit Java 11 gebaut. Die Wikipedia Anwendung ist allerdings ein Python 3.8 Projekt.  Dank der Container ist die Sprache und Version irrelevant. Jeder Service bekommt die benötigten Pakete in seinem Container installiert. So bleibt das Hostsystem frei von jeglicher Softwareinstallation.
 
 
 
@@ -77,7 +77,7 @@ In den Container können unsere Services isoliert und Unabhängig laufen. Ein Se
 -   Java 11
 -   JUnit
 - python + flask
--   Mockito
+
 [^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
 [^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
