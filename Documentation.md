@@ -1,3 +1,4 @@
+
 <!-- # Hausarbeit Cloud Computing 
 > Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  -->
  ## Einleitung 
@@ -46,7 +47,7 @@ Wenn sich Apis ändern, dann funktioniert ein servie nicht --> Kann seperat ange
  -  dezentrale Datenhaltung 
  - Architektur - Master Slave?
  - 
-# Telegram APIs
+<!-- # Telegram APIs
 
 We offer two kinds of APIs for developers. The  [**Bot API**](https://core.telegram.org/api#bot-api)  allows you to easily create programs that use Telegram messages for an interface. The  [**Telegram API and TDLib**](https://core.telegram.org/api#tdlib-build-your-own-telegram)  allow you to build your own customized Telegram clients. You are welcome to use both APIs free of charge.
 
@@ -62,22 +63,42 @@ Designers are welcome to create  [**Animated Stickers**](https://core.telegram.o
 
 This API allows you to connect bots to our system.  [**Telegram Bots**](https://core.telegram.org/bots)  are special accounts that do not require an additional phone number to set up. These accounts serve as an interface for code running somewhere on your server.
 
-To use this, you don't need to know anything about how our MTProto encryption protocol works — our intermediary server will handle all encryption and communication with the Telegram API for you. You communicate with this server via a simple HTTPS-interface that offers a simplified version of the Telegram API.
+To use this, you don't need to know anything about how our MTProto encryption protocol works — our intermediary server will handle all encryption and communication with the Telegram API for you. You communicate with this server via a simple HTTPS-interface that offers a simplified version of the Telegram API. -->
+  ## Applikationsbeschreibung
+  - Allgemein, das wir mit Json arbeiten (unsere Basis)
+  - Rest API
   
+  ### Applikationsausführung/Kommunikation
+  ### Komponenten
+Die Komponenten lassen sich visuell in der Architekturskizze betrachten. 
+- Telegram Messenger + offentliche API (siehe Telegram APIs 
+oben)
+-  Telegram API connection for BOT
+- Distribution-Domain
+- Service Wikipedia
+Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen.
+- Service Nordbahn
+- Service Wetter
+- Service URl Shortener
+Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommentaren auf Blocks oder in Social Media Kanälen. Lange Links auf kleinem Display nerven einfach. Um nicht selbst einen solch nervenaufreibenden Link zu posten, hat MIA einen URL Shortener Service. Über die API von GooLNK.com lassen sich gewünschte URLs kürzen.
+- Service Google Translator
+  ### Architekturskizze
 ## Technologien zur Anforderungserfüllung 
-Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und ist eine attraktive Alternative zur beliebten Virtualisierung . Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich docker installieren.[^2] Hinter docker steht die Technik der Containerisierung. Das Prinziz der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das reine Entwicklen am Code.
+Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und ist eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich docker installieren.[^2] Hinter docker steht die Technik der Containerisierung. Das Prinziz der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das reine Entwicklen am Code fokussieren.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebsystem, auf dem alle Container laufen und deutlich weniger Ressourcen werden verwendet. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
-In den Container können unsere Services isoliert und Unabhängig laufen. Ein Service kann jederzeit pausiert, bearbeitet oder deployed werden, ohne dass andere Services davon etwas mitbekommen.[^3] Besonders angenehm sind die Container bei der Verwendung unterschiedlicher Programmiersprachen und Versionen. Unsere Services wurden überwiegend mit Java 11 gebaut. Die Wikipedia Anwendung ist allerdings ein Python 3.8 Projekt.  Dank der Container ist die Sprache und Version irrelevant. Jeder Service bekommt die benötigten Pakete in seinem Container installiert. So bleibt das Hostsystem frei von jeglicher Softwareinstallation.
+In den Container können unsere Services isoliert und Unabhängig laufen. Ein Service kann jederzeit pausiert, bearbeitet oder deployed werden, ohne dass andere Services davon etwas mitbekommen.[^3]
+Besonders angenehm sind die Container bei der Verwendung unterschiedlicher Programmiersprachen und Versionen. Unsere Services wurden überwiegend mit Java 11 gebaut. Die Wikipedia Anwendung ist allerdings ein Python 3.8 Projekt.  Dank der Container ist die Sprache und Version irrelevant. Jeder Service bekommt die benötigten Pakete in seinem Container installiert. So bleibt das Hostsystem frei von jeglicher Softwareinstallation.
 
+Unsere Services sollen jederzeit verfügbar sein, schnell skalieren und sich einfach managen lassen.
+Kubernetes ist ein von Google entwickeltes Open Source System, das Container automatisiert verwaltet, bereitstellt und skaliert. MIA ist zur Zeit an eine kleinen Anzahl an Services angeschlossen und bei einer geringen Anzahl an Usern sind die Container noch einzeln zu überblicken.  Werden es +100 verschiedene Services, die stark skaliert werden müssen, hat kein Entwickler mehr alle Container im Überblick. Mit Container Orchestration werden alle Container überwacht und gemanaged. Kubernetes benötigt allerdings die Informationen welche Container in welcher Anzahl laufen sollen.[^6]Fällt zum Beispiel ein Container aus, kümmert sich Kubernetes darum, die gewünschte Anzahl der Container  wiederherzustellen. 
+Load Balancer weiß welcher Service auf welchen und wievielen Container läuft.  **Wie findet hier die Aufteilung statt???** Der Load Balancer verteilt die Lasten unter den laufenden Containern. Kubernetes sorgt für nahezu unendliche automatische Skalierbarkeit, hohe Ausfallsicherheit, gute Wartbarkeit und unabhängige Deployments.
 
-
-
-- Kubernetes für: Skalierbarkeit, Loadbalancing, 
 - -   Spring (-Boot, -Data)
 -   Java 11
 -   JUnit
 - python + flask
-
+- 
+[^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
 [^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
 [^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
@@ -100,10 +121,12 @@ Gute / leichte Erweiterbarkeit durch:
 - Service per Anleitung in den TelegramService einbinden 
   
 ### Offene Punkte und Verbesserungsmöglichkeiten 
-- SSL? 
-- - Außerdem eventuell ein Dashboard mit der History und/oder einer einer Statistik/Logging der Anfragen pro User.  Oder  das ich sehen kann, welcher User wieviele Anfragen auf welchem Service gemacht hat??
-- Auswahl der benötigten Services + weitere Einstellungsmöglichkeiten
-  
+MIA lässt sich zum aktuellen Zeitpunkt ausschließlich über die Textfeld Eingabemaske mit den von uns definierten Befehlen steuern. Außerdem kann der Nutzer MIA aktivieren und deaktivieren. Die Möglichkeit besteht bei den Services aktuell noch nicht. Für eine besser Übersicht der Funktionen und Einstellungen biete sich ein grafisches Web Admin Panel an. Hier hat der Benutzer zum einen die Möglichkeit seine Services zu Konfigurieren und die Befehle seinen Wünschen entsprechend anzupassen. Wünschenswert außerdem ist ein kleines Dashboard mit Informationen über den bisherigen Datenverbrauch und Statistiken über die Anfragen an die Services.
+
+Der Funktionsumfang von MIA ist mit 5 Anwendungen recht gering. Funktionen lassen sich dank der  gewählten Architektur Stück für Stück ergänzen. Die Anbindung über eine API ist besonders einfach implementiert und mit wenig Code möglich.
+ 
+ - Verbesserungsmöglichkeiten bei den einzelnen Services
+ - SSL? 
 ## Ablauf der Softwareentwicklung 
 Werkzeuge: 
 - IntelliJ IDEA 
@@ -118,13 +141,17 @@ Testing:
 CI: 
 - gitlab CI für einzelne Projekte 
 - weitere CI? (Docker in CI einbinden?) 
-## offene Punkte + Verbesserungsmöglichkeiten
-- Außerdem eventuell ein Dashboard mit der History und/oder einer einer Statistik/Logging der Anfragen pro User.  Oder  das ich sehen kann, welcher User wieviele Anfragen auf welchem Service gemacht hat??
-- Auswahl der benötigten Services + weitere Einstellungsmöglichkeiten
   
 ## Evaluation der Architektur 
 warum docker? 
 unterschiedeliche Progammiersprachen
 Microservices isoliert durch container
 Unsere Services laufen in einzelnen Containern.
+
  ## Fazit
+ Kubernetes sehr mächtig
+ wo waren die Probleme?
+ was lief gut
+ was war schwierig?
+ Trotzdem ist MIA für uns eine Hilfe im Alltag
+ 
