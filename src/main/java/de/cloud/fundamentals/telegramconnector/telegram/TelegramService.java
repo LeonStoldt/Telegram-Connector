@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TelegramService extends TelegramBot {
 
-    private static final String TOKEN = System.getenv().get("TELEGRAM_API_TOKEN");
+    private static final String TOKEN = System.getProperty("token");
 
     private RequestCallback callback;
 

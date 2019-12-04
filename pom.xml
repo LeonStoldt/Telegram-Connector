@@ -95,7 +95,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<defaultGoal>clean install</defaultGoal>
 		<resources>
 			<resource>
