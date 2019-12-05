@@ -26,7 +26,6 @@ public class Controller {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
     private static final I18n USER_FEEDBACK = new I18n();
-    private static final String JSON = MediaType.APPLICATION_JSON_VALUE;
     public static final String DISTRIBUTION_URL = "http://localhost:8080/api";
 
     @Autowired
