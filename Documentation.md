@@ -70,18 +70,21 @@ To use this, you don't need to know anything about how our MTProto encryption pr
   
   ### Applikationsausführung/Kommunikation
   ### Komponenten
-Die Komponenten lassen sich visuell in der Architekturskizze betrachten. 
-- Telegram Messenger + offentliche API (siehe Telegram APIs 
-oben)
--  Telegram API connection for BOT
-- Distribution-Domain
-- Service Wikipedia
-Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen.
-- Service Nordbahn
-- Service Wetter
-- Service URl Shortener
+Die Komponenten lassen sich in der Architekturskizze betrachten. 
+**Telegram Messenger + offentliche API (siehe Telegram APIs 
+oben)**
+**Telegram API connection for BOT**
+**Distribution-Domain**
+**Service Wikipedia**
+Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff. Wenn es zu dem Begriff eine Wiki Seite gibt, gibt MIA eine kurze Zusammenfassung zurück. Der Link zu dem Beitrag wird auch mitgeschickt, sollten die Informationen aus der Zusammenfassung nicht ausreichen. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
+**Service Nordbahn**
+Viele NAK Bahn Pendler kennen die Nordbahn gut.  Informationen zu den Zügen gibt es ausschließlich auf der nordbahn.de , ein App existiert nicht. MIA schreibt uns auf Anfrage, wann der nächste Zug für den gewünschten Bahnhof abfährt. Sie gibt uns des Weiteren Informationen über das Abfahrgleis, mögliche Verspätungen, Ausfälle und einen eingerichteten Ersatzverkehr.   
+**Service Wetter**
+--> Tims Job
+**Service URl Shortener**
 Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommentaren auf Blocks oder in Social Media Kanälen. Lange Links auf kleinem Display nerven einfach. Um nicht selbst einen solch nervenaufreibenden Link zu posten, hat MIA einen URL Shortener Service. Über die API von GooLNK.com lassen sich gewünschte URLs kürzen.
-- Service Google Translator
+**Service Google Translator**
+--> Seppels Job
   ### Architekturskizze
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und ist eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich docker installieren.[^2] Hinter docker steht die Technik der Containerisierung. Das Prinziz der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das reine Entwicklen am Code fokussieren.
@@ -125,7 +128,7 @@ MIA lässt sich zum aktuellen Zeitpunkt ausschließlich über die Textfeld Einga
 
 Der Funktionsumfang von MIA ist mit 5 Anwendungen recht gering. Funktionen lassen sich dank der  gewählten Architektur Stück für Stück ergänzen. Die Anbindung über eine API ist besonders einfach implementiert und mit wenig Code möglich.
  
- - Verbesserungsmöglichkeiten bei den einzelnen Services
+ - Verbesserungsmöglichkeiten bei den einzelnen Services?
  - SSL? 
 ## Ablauf der Softwareentwicklung 
 Werkzeuge: 
