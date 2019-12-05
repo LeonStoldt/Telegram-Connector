@@ -36,7 +36,7 @@ public class Controller {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/", produces = JSON, consumes = JSON)
+    @GetMapping("/")
     public String getStatus() {
         return "TelegramBot is active.";
     }
