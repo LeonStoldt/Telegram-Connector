@@ -76,7 +76,7 @@ oben)**
 **Telegram API connection for BOT**
 **Distribution-Domain**
 **Service Wikipedia**
-Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff. Wenn es zu dem Begriff eine Wiki Seite gibt, gibt MIA eine kurze Zusammenfassung zurück. Der Link zu dem Beitrag wird auch mitgeschickt, sollten die Informationen aus der Zusammenfassung nicht ausreichen. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
+Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff. Wenn es zu dem Begriff eine Wiki Seite gibt, gibt MIA eine kurze Zusammenfassung zurück. Der Link zu dem Beitrag wird auch mitgeschickt, sollten die Informationen aus der Zusammenfassung nicht ausreichen. Bei mehreren Treffern listet MIA alle gefunden Einträge auf. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
 **Service Nordbahn**
 Viele NAK Bahn Pendler kennen die Nordbahn gut.  Informationen zu den Zügen gibt es ausschließlich auf der nordbahn.de , ein App existiert nicht. MIA schreibt uns auf Anfrage, wann der nächste Zug für den gewünschten Bahnhof abfährt. Sie gibt uns des Weiteren Informationen über das Abfahrgleis, mögliche Verspätungen, Ausfälle und einen eingerichteten Ersatzverkehr.   
 **Service Wetter**
