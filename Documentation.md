@@ -32,6 +32,7 @@ Auch wenn Speicherplatzmangel eigentlich der Vergangenheit angehören sollte, gi
 [^1]:https://telegram.org/blog/200-million
 ---
 **technisch:**
+--> Leon Job
 Unsere Applikation basiert auf einer Micoroservice-Archiktekur. Die Vorteile gegenüber einem Monolithen spielen uns in die Hände. 
 Wenn sich Apis ändern, dann funktioniert ein servie nicht --> Kann seperat angepasst werden + seperates DEPLOYMENT!!!! (vs. Monolith)
  -  hohe Verfügbarkeit --> Warum wichtig?
@@ -69,12 +70,16 @@ To use this, you don't need to know anything about how our MTProto encryption pr
   - Rest API
   
   ### Applikationsausführung/Kommunikation
+  - Stichwort "Domain Driven Design"? 
   ### Komponenten
 Die Komponenten lassen sich in der Architekturskizze betrachten. 
 **Telegram Messenger + offentliche API (siehe Telegram APIs 
 oben)**
+--> Dominik Job
 **Telegram API connection for BOT**
+--> Leon Job
 **Distribution-Domain**
+--> Leon Job
 **Service Wikipedia**
 Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff. Wenn es zu dem Begriff eine Wiki Seite gibt, gibt MIA eine kurze Zusammenfassung zurück. Der Link zu dem Beitrag wird auch mitgeschickt, sollten die Informationen aus der Zusammenfassung nicht ausreichen. Bei mehreren Treffern listet MIA alle gefunden Einträge auf. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
 **Service Nordbahn**
@@ -86,6 +91,7 @@ Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommenta
 **Service Google Translator**
 --> Seppels Job
   ### Architekturskizze
+  --> Leon Job
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und ist eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich docker installieren.[^2] Hinter docker steht die Technik der Containerisierung. Das Prinziz der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das reine Entwicklen am Code fokussieren.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebsystem, auf dem alle Container laufen und deutlich weniger Ressourcen werden verwendet. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
@@ -95,7 +101,7 @@ Besonders angenehm sind die Container bei der Verwendung unterschiedlicher Progr
 Unsere Services sollen jederzeit verfügbar sein, schnell skalieren und sich einfach managen lassen.
 Kubernetes ist ein von Google entwickeltes Open Source System, das Container automatisiert verwaltet, bereitstellt und skaliert. MIA ist zur Zeit an eine kleinen Anzahl an Services angeschlossen und bei einer geringen Anzahl an Usern sind die Container noch einzeln zu überblicken.  Werden es +100 verschiedene Services, die stark skaliert werden müssen, hat kein Entwickler mehr alle Container im Überblick. Mit Container Orchestration werden alle Container überwacht und gemanaged. Kubernetes benötigt allerdings die Informationen welche Container in welcher Anzahl laufen sollen.[^6]Fällt zum Beispiel ein Container aus, kümmert sich Kubernetes darum, die gewünschte Anzahl der Container  wiederherzustellen. 
 Load Balancer weiß welcher Service auf welchen und wievielen Container läuft.  **Wie findet hier die Aufteilung statt???** Der Load Balancer verteilt die Lasten unter den laufenden Containern. Kubernetes sorgt für nahezu unendliche automatische Skalierbarkeit, hohe Ausfallsicherheit, gute Wartbarkeit und unabhängige Deployments.
-
+--> Dominik Job
 - -   Spring (-Boot, -Data)
 -   Java 11
 -   JUnit
@@ -105,9 +111,6 @@ Load Balancer weiß welcher Service auf welchen und wievielen Container läuft. 
 [^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
 [^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
- ## Applikationsbeschreibung 
- ### Architekturbeschreibung und Kommunikation 
-- Stichwort "Domain Driven Design"? 
   
 ### Anforderungserfüllung im Hinblick auf Skalierbarkeit / Erweiterbarkeit 
 Auf Anforderungserfüllungen einzeln eingehen 
@@ -152,6 +155,7 @@ Microservices isoliert durch container
 Unsere Services laufen in einzelnen Containern.
 
  ## Fazit
+ --> Job ALLE!
  Kubernetes sehr mächtig
  wo waren die Probleme?
  was lief gut
