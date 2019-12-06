@@ -1,4 +1,3 @@
-
 <!-- # Hausarbeit Cloud Computing 
 > Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  
 DECKBLATT
@@ -68,6 +67,7 @@ Die Komponenten lassen sich in der Architekturskizze betrachten.
 Über BotFather lassen sich neue Bots erstellen, die in Telegram laufen[^11] Ein Bot ist ein besonderer Telegram Account, der ohne eine Telefonnummer funktioniert. Über Nachrichten und Befehle lässt sich der Bot steuern.[^10] 
 [^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
 [^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
+
 **Distribution Service**
 User Management, Profileservice /Start /Stop 
 Anbindung an DB
