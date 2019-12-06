@@ -1,7 +1,10 @@
 
-
 <!-- # Hausarbeit Cloud Computing 
-> Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  -->
+> Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  
+DECKBLATT
+INAHLTSVERZEICHNIS
+QUELLEBNVERZEICHNIS
+-->
  ## Einleitung 
  #### Einführung in den Kontext: 
 Diese Arbeit entsteht im Rahmen des Wahlpflichtmoduls "Cloud - Grundlagen und Praxis". Die Aufgabe besteht darin als Gruppe eine beliebig wählbare Applikation zu entwerfen, die mit Docker containerisiert und mit einem Tool der Wahl orchestriert wird. Dies soll vor allem in Hinblick auf die Aspekte der Skalierbarkeit und Erweiterbarkeit der Anwendung entwickelt werden.
@@ -26,7 +29,7 @@ MIA soll bei minimalen Funktionen und einem schlichten Design den größtmöglic
 Die Kommunikation der Daten definiert bereits den Informationsgehalt, durch die simple Anzeige von reinem Text. Dadurch, dass Bilder oder Icons nicht mit geladen werden, wird die Antwortzeit und die Größe der Datenpakete reduziert. Dabei sollten sowohl die Antwortzeit als auch das Ausführen der Abfrage so wenig Zeit wie möglich verbrauchen.
 
 Bezogen auf das obige Szenario stellt sich die folgende Frage: Wann fährt die nächste Bahn ab Elmshorn?
-Um dies herauszufinden müssen wir zunächst die DB App /Homepage suchen, öffnen und die Ladezeit ertragen. Dann geht es über das Bürger-Menü zum Reiter "Abfahrt/Ankunft".  Nach dem eingeben der Abfahrtstation und dem anschließenden Klick auf "Suchen", werden meistens die gewünschten Informationen angezeigt. Diese simple Abfrage dauert im Regelfall und bei einer WLAN-Verbindung ca. **...** Sekunden.
+Um dies herauszufinden müssen wir zunächst die DB App /Homepage suchen, öffnen und die Ladezeit ertragen. Dann geht es über das Bürger-Menü zum Reiter "Abfahrt/Ankunft".  Nach dem eingeben der Abfahrtstation und dem anschließenden Klick auf "Suchen", werden meistens die gewünschten Informationen angezeigt. Diese simple Abfrage dauert im Regelfall und bei einer WLAN-Verbindung ca. 20 Sekunden.
 
 Als Basis Übertragungsmedium für unsere Services dient Telegram. Der Cloud-Messenger ist mit über 200 Millionen aktiven Usern eine bekannte WhatsApp Alternative. [^1] Die native Telegram App lässt sich auf  allen gängigen Plattformen installieren oder auf Wunsch auch als Web-App über [web.telegram.org](https://web.telegram.org/) aufrufen.  Eine Device Unabhängigkeit ist dementsprechend gewährleistet. 
 
@@ -46,29 +49,12 @@ Wenn sich Apis ändern, dann funktioniert ein servie nicht --> Kann seperat ange
  -  hohe Erweiterbarkeit MSA
  -  hohe Skalierbarkeit MSA
  -  kleine, unabhängige self-contained-systems für einen abgeschlossenen, fachlichen Kontext pro Service 
- - -wartbarkeit
+ - wartbarkeit
  -  unabhängige Deployments (CI / CD) 
  -  hohe Anpassungsfähigkeit und nachhaltige Vereinfachung späterer Implementierungen und der einzelnen Services
  -  dezentrale Datenhaltung 
  - Architektur - Master Slave?
- - 
-<!-- # Telegram APIs
-
-We offer two kinds of APIs for developers. The  [**Bot API**](https://core.telegram.org/api#bot-api)  allows you to easily create programs that use Telegram messages for an interface. The  [**Telegram API and TDLib**](https://core.telegram.org/api#tdlib-build-your-own-telegram)  allow you to build your own customized Telegram clients. You are welcome to use both APIs free of charge.
-
-You can also add  [**Telegram Widgets**](https://core.telegram.org/widgets)  to your website.
-
-Designers are welcome to create  [**Animated Stickers**](https://core.telegram.org/animated_stickers)  or  [**Custom Themes**](https://core.telegram.org/themes)  for Telegram.
-
-----------
-
-### [](https://core.telegram.org/api#bot-api)Bot API
-
-[![](https://core.telegram.org/file/811140934/1/tbDSLHSaijc/fdcc7b6d5fb3354adf "The Botfather. Click for hi-res picture")](https://core.telegram.org/file/811140327/1/zlN4goPTupk/9ff2f2f01c4bd1b013)
-
-This API allows you to connect bots to our system.  [**Telegram Bots**](https://core.telegram.org/bots)  are special accounts that do not require an additional phone number to set up. These accounts serve as an interface for code running somewhere on your server.
-
-To use this, you don't need to know anything about how our MTProto encryption protocol works — our intermediary server will handle all encryption and communication with the Telegram API for you. You communicate with this server via a simple HTTPS-interface that offers a simplified version of the Telegram API. -->
+ 
   ## Applikationsbeschreibung
   - Allgemein, das wir mit Json arbeiten (unsere Basis)
   - Rest API
@@ -77,25 +63,27 @@ To use this, you don't need to know anything about how our MTProto encryption pr
   - Stichwort "Domain Driven Design"? 
   ### Komponenten
 Die Komponenten lassen sich in der Architekturskizze betrachten. 
-**Telegram Messenger + offentliche API (siehe Telegram APIs 
-oben)**
---> Dominik Job
-**Telegram API connection for BOT**
---> Leon Job
-**Distribution-Domain**
---> Leon Job
+
+**Telegram BOT**
+Über BotFather lassen sich neue Bots erstellen, die in Telegram laufen[^11] Ein Bot ist ein besonderer Telegram Account, der ohne eine Telefonnummer funktioniert. Über Nachrichten und Befehle lässt sich der Bot steuern.[^10] 
+[^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
+[^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
+**Distribution Service**
+User Management, Profileservice /Start /Stop 
+Anbindung an DB
+--> Leon Job (Bild + Text)
 **Service Wikipedia**
 Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff und gibt über MIA eine kurze Zusammenfassung mit Link der Wiki Seite an den User zurück, sofern die Seite existiert. Sollten die Informationen aus der Zusammenfassung nicht ausreichen, kann der Nutzer auf den Link gehen und erspart sich die Browser Navigation über die Suchmaschine zur Seite. Bei mehreren Treffern listet MIA alle gefunden Einträge auf. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
 **Service Nordbahn**
 Viele Bahn Pendler nutzen die Nordbahn regelmäßig und viele davon sind Studenten der Nordakademie. Informationen zu den Zügen gibt es ausschließlich auf der Seite [nordbahn.de](https://nordbahn.de), da eine App nicht existiert. MIA schreibt dem Nutzer auf Anfrage, wann der nächste Zug für den gewünschten Bahnhof abfährt. Sie gibt des Weiteren Informationen über das Abfahrgleis, mögliche Verspätungen, Ausfälle und einen eingerichteten Ersatzverkehr.   
 **Service Wetter**
 --> Tims Job
-**Service URl Shortener**
+**Service URL Shortener**
 Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommentaren, auf Blocks oder in Social Media Kanälen. Lange Links auf kleinem Display sind sehr umständlich und schlecht lesbar. Um nicht selbst einen solch nervenaufreibenden Link zu posten, hat MIA einen URL Shortener Service, der die "GooLNK.com" - API benutzt und gewünschte URLs kürzt.
 **Service Google Translator**
 --> Seppels Job
   ### Architekturskizze
-  --> Leon Job
+  --> Leon Job (BILD + Text))
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich Docker installieren.[^2] Hinter Docker steht die Technik der Containerisierung. Das Prinzip der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das entwickeln am Code fokussieren.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebssystem, auf dem alle Container laufen und deutlich weniger Ressourcen verwenden. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
@@ -105,12 +93,9 @@ Besonders angenehm sind die Container bei der Verwendung unterschiedlicher Progr
 Unsere Services sollen jederzeit verfügbar sein, schnell skalieren und sich einfach managen lassen.
 Kubernetes ist ein von Google entwickeltes Open Source System, das Container automatisiert verwaltet, bereitstellt und skaliert. MIA ist zur Zeit an eine kleinen Anzahl an Services angeschlossen und bei einer geringen Anzahl an Usern sind die Container noch einzeln zu überblicken.  Werden es +100 verschiedene Services, die stark skaliert werden müssen, hat kein Entwickler mehr alle Container im Überblick. Mit Container Orchestration werden alle Container überwacht und organisiert. Kubernetes benötigt allerdings die Informationen welche Container in welcher Anzahl laufen sollen.[^6]Fällt zum Beispiel ein Container aus, kümmert sich Kubernetes darum, die gewünschte Anzahl der Container  wiederherzustellen. 
 Ein Load Balancer weiß welcher Service auf welchen und wie vielen Container läuft.  **Wie findet hier die Aufteilung statt???** Der Load Balancer verteilt die Lasten unter den laufenden Containern. Kubernetes sorgt für nahezu unendliche automatische Skalierbarkeit, hohe Ausfallsicherheit, gute Wartbarkeit und unabhängige Deployments.
---> Dominik Job
-- -   Spring (-Boot, -Data)
--   Java 11
--   JUnit
-- python + flask
-- 
+
+Das Spring Boot Framework bringt viel hilfreiche Klassenbibliotheken für die Java Plattform mit. Der Zugriff auf die Datenbank läuft über Spring Data. Mit unseren Services, die auf Java 11 (LTS) und Python 3.8 laufen, sind wir auf aktuellen Versionen unterwegs.Der Python Service nutzt Flask als Lightweight Web Applikation Framework. Die Java Anwendungen werden mittels Junit 5 getestet.
+
 [^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
 [^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
@@ -131,14 +116,18 @@ Gute / leichte Erweiterbarkeit durch:
 - Service per Anleitung in den TelegramService einbinden 
   
 ### Offene Punkte und Verbesserungsmöglichkeiten 
-MIA lässt sich zum aktuellen Zeitpunkt ausschließlich über die Textfeld Eingabemaske mit den von uns definierten Befehlen steuern. Außerdem kann der Nutzer MIA aktivieren und deaktivieren. Die Möglichkeit besteht bei den Services aktuell noch nicht. Für eine besser Übersicht der Funktionen und Einstellungen biete sich ein grafisches Web Admin Panel an. Hier hat der Benutzer zum einen die Möglichkeit seine Services zu konfigurieren und die Befehle seinen Wünschen entsprechend anzupassen. Außerdem ist es wünschenswert ein kleines Dashboard mit Informationen über den bisherigen Datenverbrauch und Statistiken über die Anfragen an die Services anzubieten.
-- Auf Telegram Buttons eingehen (bietet viele Möglichkeiten zur Kommunikation
-- Auf eventuelles Feature eingehen Meldungen zeitgesteuert und regelmäßig zu posten, wie z.B. morgentliches Wetter oder Bahn
+MIA lässt sich zum aktuellen Zeitpunkt ausschließlich über die Textfeld Eingabemaske mit den von uns definierten Befehlen steuern. Außerdem kann der Nutzer MIA aktivieren und deaktivieren. Die Möglichkeit besteht bei den Services aktuell noch nicht. Für eine besser Übersicht der Funktionen und Einstellungen biete sich ein grafisches Web Admin Panel an. Hier hat der Benutzer zum einen die Möglichkeit seine Services zu konfigurieren und die Befehle seinen Wünschen entsprechend anzupassen. Außerdem ist es wünschenswert, ein kleines Dashboard mit Informationen über den bisherigen Datenverbrauch und Statistiken über die Anfragen an die Services anzubieten.
+
+Viele Menschen haben durch ihren Job, ihre Kinder oder ihr Hobby geregelte Tagesabläufe. Das bedeutet im Fall von festen Arbeitszeiten, wird jeden Morgen der Zug um die gleiche Zeit gewählt wird. Für die passende Outfit Wahl könnte die aktuelle und zu erreichte Tagestemperatur interessant sein. Je nach Regenwahrscheinlichkeit wird der Schirm eingepackt. Der User sendet also jeden Werktag die gleiche Anfrage - um eine ähnliche Uhrzeit - an die Nordbahn und Wetter API. Routinen nehmen an der Stelle die Arbeit ab und eigenen sich wunderbar für das automatisierte Auszuführen von Abfragen. Routinen für die einzelnen Services lassen dann im Admin Panel einrichten und verwalten. 
 
 Der Funktionsumfang von MIA ist mit 5 Anwendungen recht gering. Funktionen lassen sich dank der  gewählten Architektur Stück für Stück ergänzen. Die Anbindung über eine API ist besonders einfach implementiert und mit wenig Code möglich.
  
- - Verbesserungsmöglichkeiten bei den einzelnen Services?
- - SSL? 
+Der Translation Service übersetzt jede Sprache, die der Google Translator unterstützt. Momentan allerdings nur ins Deutsche. Wünschenswert ist demnach eine Erweiterung, mit der ein User die Zielsprache auswählen kann.
+ 
+Die Kommunikation unter den kommunizierenden Services ist nicht über SSL verschlüsselt. Zwischen dem Distribution Service und der Telegram API werden personenbezogene Daten Übertragen. Darunter fallen unter anderm ChatID, Status (aktiv/deaktiviert), Vorname, Nachname und Benutzername. Eine Handynummer wird nicht übermittelt. Auch die Nachricht mit der Abfrage kann abgefangen werden. Bei den aktuellen Services sehen wir bei bewusster Anwendung noch kein extremes Sicherheitsrisiko. Über soziale Medien lassen sich deutlich mehr personenbezogene Informationen einfach abgreifen wie z.B. genaue Standorte mit Bild oder Bekannte Personen.
+
+- Auf Telegram Buttons eingehen (bietet viele Möglichkeiten zur Kommunikation 
+--> Leons Job
 ## Ablauf der Softwareentwicklung 
 Werkzeuge: 
 - IntelliJ IDEA 
@@ -156,7 +145,7 @@ CI:
   
 ## Evaluation der Architektur 
 warum docker? 
-unterschiedeliche Progammiersprachen
+unterschiedeliche Progammiersprachen (Java/python)
 Microservices isoliert durch container
 Unsere Services laufen in einzelnen Containern.
 
@@ -167,4 +156,3 @@ Unsere Services laufen in einzelnen Containern.
  was lief gut
  was war schwierig?
  Trotzdem ist MIA für uns eine Hilfe im Alltag
- 
