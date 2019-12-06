@@ -1,3 +1,4 @@
+
 <!-- # Hausarbeit Cloud Computing 
 > Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  
 DECKBLATT
@@ -30,13 +31,10 @@ Die Kommunikation der Daten definiert bereits den Informationsgehalt, durch die 
 Bezogen auf das obige Szenario stellt sich die folgende Frage: Wann fährt die nächste Bahn ab Elmshorn?
 Um dies herauszufinden müssen wir zunächst die DB App /Homepage suchen, öffnen und die Ladezeit ertragen. Dann geht es über das Bürger-Menü zum Reiter "Abfahrt/Ankunft".  Nach dem eingeben der Abfahrtstation und dem anschließenden Klick auf "Suchen", werden meistens die gewünschten Informationen angezeigt. Diese simple Abfrage dauert im Regelfall und bei einer WLAN-Verbindung ca. 20 Sekunden.
 
-Als Basis Übertragungsmedium für unsere Services dient Telegram. Der Cloud-Messenger ist mit über 200 Millionen aktiven Usern eine bekannte WhatsApp Alternative. [^1] Die native Telegram App lässt sich auf  allen gängigen Plattformen installieren oder auf Wunsch auch als Web-App über [web.telegram.org](https://web.telegram.org/) aufrufen.  Eine Device Unabhängigkeit ist dementsprechend gewährleistet. 
+Als Basis Übertragungsmedium für unsere Services dient Telegram. Der Cloud-Messenger ist mit über 200 Millionen aktiven Usern eine bekannte WhatsApp Alternative.[^1] Die native Telegram App lässt sich auf  allen gängigen Plattformen installieren oder auf Wunsch auch als Web-App über [web.telegram.org](https://web.telegram.org/) aufrufen.  Eine Device Unabhängigkeit ist dementsprechend gewährleistet. 
 
 Auch wenn Speicherplatzmangel eigentlich der Vergangenheit angehören sollte, gibt es immernoch User, die über Speichermangel auf dem Smartphone klagen. Der Telegram- Bot minimiert die Anzahl der notwendigen App Installationen. Die besondere Lightweight Variante sorgt zudem für einen aufgeräumten Screen und löst den App-Dschungel auf.
 
-
-[^1]:https://telegram.org/blog/200-million
----
 **technisch:**
 --> Leon Job
 Unsere Applikation basiert auf einer Micoroservice-Archiktekur. Die Vorteile gegenüber einem Monolithen spielen uns in die Hände. 
@@ -60,13 +58,12 @@ Wenn sich Apis ändern, dann funktioniert ein servie nicht --> Kann seperat ange
   
   ### Applikationsausführung/Kommunikation
   - Stichwort "Domain Driven Design"? 
+ 
   ### Komponenten
 Die Komponenten lassen sich in der Architekturskizze betrachten. 
 
 **Telegram BOT**
 Über BotFather lassen sich neue Bots erstellen, die in Telegram laufen[^11] Ein Bot ist ein besonderer Telegram Account, der ohne eine Telefonnummer funktioniert. Über Nachrichten und Befehle lässt sich der Bot steuern.[^10] 
-[^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
-[^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
 
 **Distribution Service**
 User Management, Profileservice /Start /Stop 
@@ -89,7 +86,7 @@ Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommenta
 --> Seppels Job
   ### Architekturskizze
   --> Leon Job (BILD + Text))
-
+  
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich Docker installieren.[^2] Hinter Docker steht die Technik der Containerisierung. Das Prinzip der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das entwickeln am Code fokussieren.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebssystem, auf dem alle Container laufen und deutlich weniger Ressourcen verwenden. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
@@ -102,10 +99,13 @@ Ein Load Balancer weiß welcher Service auf welchen und wie vielen Container lä
 
 Das Spring Boot Framework bringt viel hilfreiche Klassenbibliotheken für die Java Plattform mit. Der Zugriff auf die Datenbank läuft über Spring Data. Mit unseren Services, die auf Java 11 (LTS) und Python 3.8 laufen, sind wir auf aktuellen Versionen unterwegs.Der Python Service nutzt Flask als Lightweight Web Applikation Framework. Die Java Anwendungen werden mittels Junit 5 getestet.
 
+[^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
+[^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
 [^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
 [^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
 [^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
+[^1]:https://telegram.org/blog/200-million
   
 ### Anforderungserfüllung im Hinblick auf Skalierbarkeit / Erweiterbarkeit 
 Auf Anforderungserfüllungen einzeln eingehen 
