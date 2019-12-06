@@ -98,14 +98,6 @@ Kubernetes ist ein von Google entwickeltes Open Source System, das Container aut
 Ein Load Balancer weiß welcher Service auf welchen und wie vielen Container läuft.  **Wie findet hier die Aufteilung statt???** Der Load Balancer verteilt die Lasten unter den laufenden Containern. Kubernetes sorgt für nahezu unendliche automatische Skalierbarkeit, hohe Ausfallsicherheit, gute Wartbarkeit und unabhängige Deployments.
 
 Das Spring Boot Framework bringt viel hilfreiche Klassenbibliotheken für die Java Plattform mit. Der Zugriff auf die Datenbank läuft über Spring Data. Mit unseren Services, die auf Java 11 (LTS) und Python 3.8 laufen, sind wir auf aktuellen Versionen unterwegs.Der Python Service nutzt Flask als Lightweight Web Applikation Framework. Die Java Anwendungen werden mittels Junit 5 getestet.
-
-[^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
-[^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
-[^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
-[^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
-[^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
-[^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
-[^1]:https://telegram.org/blog/200-million
   
 ### Anforderungserfüllung im Hinblick auf Skalierbarkeit / Erweiterbarkeit 
 Auf Anforderungserfüllungen einzeln eingehen 
@@ -162,3 +154,12 @@ Unsere Services laufen in einzelnen Containern.
  was lief gut
  was war schwierig?
  Trotzdem ist MIA für uns eine Hilfe im Alltag
+
+### Quellen
+[^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
+[^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
+[^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
+[^4]:[https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
+[^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
+[^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
+[^1]:https://telegram.org/blog/200-million
