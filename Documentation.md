@@ -72,18 +72,24 @@ Die Komponenten lassen sich in der Architekturskizze betrachten.
 User Management, Profileservice /Start /Stop 
 Anbindung an DB
 --> Leon Job (Bild + Text)
+
 **Service Wikipedia**
 Wikipedia ist seit Jahren die beliebteste Anlaufstelle auf der Suche nach schnellen Informationen. Der Service akzeptiert einen Suchbegriff und gibt über MIA eine kurze Zusammenfassung mit Link der Wiki Seite an den User zurück, sofern die Seite existiert. Sollten die Informationen aus der Zusammenfassung nicht ausreichen, kann der Nutzer auf den Link gehen und erspart sich die Browser Navigation über die Suchmaschine zur Seite. Bei mehreren Treffern listet MIA alle gefunden Einträge auf. Findet MIA keinen Wikipediaeintrag für den Suchbegriff, gibt es einen Hinweis, dass der Suchbegriff zu keinem Eintrag führt.
+
 **Service Nordbahn**
 Viele Bahn Pendler nutzen die Nordbahn regelmäßig und viele davon sind Studenten der Nordakademie. Informationen zu den Zügen gibt es ausschließlich auf der Seite [nordbahn.de](https://nordbahn.de), da eine App nicht existiert. MIA schreibt dem Nutzer auf Anfrage, wann der nächste Zug für den gewünschten Bahnhof abfährt. Sie gibt des Weiteren Informationen über das Abfahrgleis, mögliche Verspätungen, Ausfälle und einen eingerichteten Ersatzverkehr.   
+
 **Service Wetter**
 --> Tims Job
+
 **Service URL Shortener**
 Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommentaren, auf Blocks oder in Social Media Kanälen. Lange Links auf kleinem Display sind sehr umständlich und schlecht lesbar. Um nicht selbst einen solch nervenaufreibenden Link zu posten, hat MIA einen URL Shortener Service, der die "GooLNK.com" - API benutzt und gewünschte URLs kürzt.
+
 **Service Google Translator**
 --> Seppels Job
   ### Architekturskizze
   --> Leon Job (BILD + Text))
+
 ## Technologien zur Anforderungserfüllung 
 Die Open Source Containertechnik mit Docker ist 2013 veröffentlicht worden und eine attraktive Alternative zur beliebten Virtualisierung. Auf Windows, MAC, Linux und  vielen anderen Distributionen lässt sich Docker installieren.[^2] Hinter Docker steht die Technik der Containerisierung. Das Prinzip der Container ist recht simpel. Bei den großen Schiffcontainern (ISO-Container) gibt es bestimmte Standards wie z.B die Größe und die Festmachpunkte. Damit lässt sich der Container auf jedem beliebigen Containerschiff transportieren und im Hafen von Kränen auf Güterzuge oder LKWs verladen. Welchen Inhalt der Container hat, spielt zunächst kein Rolle. Darüber freut sich auch der Entwickler. Der Code inklusive aller Abhängigkeiten und Konfigurationen befindet sich in dem Container. Der Entwickler schafft mit einer installierten docker Version die Grundlage für alle Container und kann sich vollständig auf das entwickeln am Code fokussieren.
 Container haben im Gegensatz zu dem Prinzip der Virtualisierung einen entscheidenen Vorteil: Es gibt nur ein Betriebssystem, auf dem alle Container laufen und deutlich weniger Ressourcen verwenden. Dadurch stehen mehr Performance und Speicher für die containerisierten Anwendungen zur Verfügung.[^4] Docker Container eigenen sich wunderbar für modere Software auf der Basis von Mikroservices.
