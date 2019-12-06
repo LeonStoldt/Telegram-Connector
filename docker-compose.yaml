@@ -1,0 +1,115 @@
+version: '3'
+
+services:
+  connector:
+    build: ./telegram-connector
+    ports:
+      - 8001:8001
+    networks:
+      - connector-distributor-network
+
+  distributor:
+    build: ./distributionservice
+    ports:
+      - 8002:8002
+    depends_on:
+      - connector
+      - postgres
+    networks:
+      - connector-distributor-network
+      - distributor-private-network
+      - nordbahn-service-network
+      - translate-service-network
+      - urlshortener-service-network
+      - wikipedia-service-network
+      - weather-service-network
+
+  postgres:
+    restart: always
+    image: sameersbn/postgresql:10-2
+    ports:
+      - 5432:5432
+    environment:
+      - DEBUG=false
+      - DB_USER=Telegram
+      - DB_PASS=telegram
+      - DB_NAME=Telegram
+    volumes:
+      - /srv/docker/postgresql:/var/lib/postgresql
+    networks:
+      - distributor-private-network
+
+  nordbahn:
+    build: ./nordbahnservice
+    ports:
+      - 8003:8003
+    depends_on:
+      - distributor
+    networks:
+      - nordbahn-service-network
+
+  translate:
+    build: ./translateservice
+    ports:
+      - 8004:8004
+    depends_on:
+      - distributor
+    networks:
+      - translate-service-network
+
+  urlshortener:
+    build: ./urlshortenerservice
+    ports:
+      - 8005:8005
+    depends_on:
+      - distributor
+    networks:
+      - urlshortener-service-network
+
+  wikipedia:
+    build: ./wikipediaservice
+    ports:
+      - 8006:8006
+    depends_on:
+      - distributor
+    networks:
+      - wikipedia-service-network
+
+  weather:
+    build: ./weatherservice
+    ports:
+      - 8007:8007
+    depends_on:
+      - distributor
+      - mariadb
+    networks:
+      - weather-service-network
+      - weather-private-network
+
+  mariadb:
+    image: bitnami/mariadb:latest
+    restart: on-failure
+    environment:
+      - MARIADB_ROOT_USER=telegram-weather
+      - MARIADB_ROOT_PASSWORD=fqWSU9Y7mLDmLTpKDA84fFg3rGEem8yAdNy57C2gcJJMjT7e9C3wEzpCzR5juZy6
+      - MARIADB_DATABASE=telegram-weather
+    networks:
+      - weather-private-network
+
+networks:
+  connector-distributor-network:
+    driver: bridge
+  distributor-private-network:
+    driver: bridge
+  nordbahn-service-network:
+    driver: bridge
+  translate-service-network:
+    driver: bridge
+  urlshortener-service-network:
+    driver: bridge
+  wikipedia-service-network:
+    driver: bridge
+  weather-service-network:
+    driver: bridge
+  weather-private-network:
+    driver: bridge
