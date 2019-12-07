@@ -90,6 +90,7 @@
         // handles api requests or provides features
         // input - message from telegram without keyword
         // output - message to response user request
+        private static final String JSON = MediaType.APPLICATION_JSON_VALUE;
         private final ApiService apiService;
     
         @Autowired
@@ -99,12 +100,12 @@
     
         // (optional) to check status of service via browser
         @ResponseStatus(HttpStatus.OK)
-        @GetMapping(value = "/", produces = JSON)
+        @GetMapping(value = "/")
         public String getStatus() {
             return "xxxService is active.";
         }
     
-        @PostMapping("/api") //define endpoint
+        @PostMapping(value = "/api", produces = JSON, consumes = JSON) //define endpoint
         public ResponseEntity<String> receiveRequest(@RequestBody String message) {
             return ResponseEntity
                     .status(HttpStatus.OK)
