@@ -6,7 +6,9 @@ services:
     ports:
       - 8001:8001
     networks:
-      - connector-distributor-network
+      connector-distributor-network:
+        aliases:
+            - connector
 
   distributor:
     build: ./distributionservice
@@ -16,13 +18,27 @@ services:
       - connector
       - postgres
     networks:
-      - connector-distributor-network
-      - distributor-private-network
-      - nordbahn-service-network
-      - translate-service-network
-      - urlshortener-service-network
-      - wikipedia-service-network
-      - weather-service-network
+      connector-distributor-network:
+        aliases:
+          - distributor
+      distributor-private-network:
+        aliases:
+          - distributor
+      nordbahn-service-network:
+        aliases:
+          - distributor
+      translate-service-network:
+        aliases:
+          - distributor
+      urlshortener-service-network:
+        aliases:
+          - distributor
+      wikipedia-service-network:
+        aliases:
+          - distributor
+      weather-service-network:
+        aliases:
+          - distributor
 
   postgres:
     restart: always
@@ -37,7 +53,9 @@ services:
     volumes:
       - /srv/docker/postgresql:/var/lib/postgresql
     networks:
-      - distributor-private-network
+      distributor-private-network:
+        aliases:
+          - postgres
 
   nordbahn:
     build: ./nordbahnservice
@@ -46,7 +64,9 @@ services:
     depends_on:
       - distributor
     networks:
-      - nordbahn-service-network
+      nordbahn-service-network:
+        aliases:
+          - nordbahn
 
   translate:
     build: ./translateservice
@@ -55,7 +75,9 @@ services:
     depends_on:
       - distributor
     networks:
-      - translate-service-network
+      translate-service-network:
+        aliases:
+          - translate
 
   urlshortener:
     build: ./urlshortenerservice
@@ -64,7 +86,9 @@ services:
     depends_on:
       - distributor
     networks:
-      - urlshortener-service-network
+      urlshortener-service-network:
+        aliases:
+          - urlshortener
 
   wikipedia:
     build: ./wikipediaservice
@@ -73,7 +97,9 @@ services:
     depends_on:
       - distributor
     networks:
-      - wikipedia-service-network
+      wikipedia-service-network:
+        aliases:
+          - wikipedia
 
   weather:
     build: ./weatherservice
@@ -83,8 +109,12 @@ services:
       - distributor
       - mariadb
     networks:
-      - weather-service-network
-      - weather-private-network
+      weather-service-network:
+        aliases:
+          - weather
+      weather-private-network:
+        aliases:
+          - weather
 
   mariadb:
     image: bitnami/mariadb:latest
@@ -94,7 +124,9 @@ services:
       - MARIADB_ROOT_PASSWORD=fqWSU9Y7mLDmLTpKDA84fFg3rGEem8yAdNy57C2gcJJMjT7e9C3wEzpCzR5juZy6
       - MARIADB_DATABASE=telegram-weather
     networks:
-      - weather-private-network
+      weather-private-network:
+        aliases:
+          - mariadb
 
 networks:
   connector-distributor-network:

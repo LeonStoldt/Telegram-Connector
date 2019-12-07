@@ -84,4 +84,17 @@ public class RequestDetails {
     public void setChatType(Chat.Type chatType) {
         this.chatType = chatType;
     }
+
+    @Override
+    public String toString() {
+        return "RequestDetails{" +
+                "chatId=" + chatId +
+                ", message='" + message + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", title='" + title + '\'' +
+                ", chatType=" + chatType +
+                '}';
+    }
 }

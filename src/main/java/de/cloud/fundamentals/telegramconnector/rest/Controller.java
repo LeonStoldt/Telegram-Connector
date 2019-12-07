@@ -14,6 +14,7 @@ import org.asynchttpclient.util.HttpConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +27,8 @@ public class Controller {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
     private static final I18n USER_FEEDBACK = new I18n();
-    public static final String DISTRIBUTION_URL = "http://localhost:8080/api";
+    @Value("${distribution-url:http://distributor:8002/api}")
+    private String distributionUrl;
 
     @Autowired
     public Controller(TelegramService telegramService) {
@@ -42,13 +44,14 @@ public class Controller {
 
     private Answer collectResponse(Message message) {
         RequestDetails details = new RequestDetails(message);
+        LOGGER.info("creted details {}", details);
         Answer answer = new Answer(details.getChatId());
 
         try {
             String requestBody = new ObjectMapper().writeValueAsString(details);
 
             Request request = new RequestBuilder(HttpConstants.Methods.POST)
-                    .setUrl(DISTRIBUTION_URL)
+                    .setUrl(distributionUrl)
                     .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .setBody(requestBody)
                     .build();
@@ -57,12 +60,16 @@ public class Controller {
                     .executeRequest(request)
                     .toCompletableFuture()
                     .thenApply(Response::getResponseBody)
-                    .exceptionally(e -> USER_FEEDBACK.get("error.wrong-status-code"))
+                    .exceptionally(e -> {
+                        LOGGER.warn("received an error:", e);
+                        return USER_FEEDBACK.get("error.wrong-status-code");
+                    })
                     .get();
 
+            LOGGER.info("received response successfully ({})", responseMessage);
             answer.setMessage(responseMessage);
-
         } catch (Exception e) {
+            LOGGER.warn("an error occured:", e);
             answer = Answer.error(details.getChatId());
         }
         return answer;

@@ -7,6 +7,8 @@ import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.SendMessage;
 import de.cloud.fundamentals.telegramconnector.rest.RequestCallback;
 import de.cloud.fundamentals.telegramconnector.rest.dto.Answer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TelegramService extends TelegramBot {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TelegramService.class);
     private static final String TOKEN = System.getProperty("token");
 
     private RequestCallback callback;
@@ -37,6 +40,7 @@ public class TelegramService extends TelegramBot {
                 else if (update.channelPost() != null) message = update.channelPost();
                 else if (update.editedChannelPost() != null) message = update.editedChannelPost();
 
+                LOGGER.info("received: {} from update {}", message, update);
                 if (message != null) sendMessage(callback.collectResponse(message));
             });
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
