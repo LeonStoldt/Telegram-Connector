@@ -47,9 +47,9 @@ services:
     image: sameersbn/postgresql:10-2
     environment:
       - DEBUG=false
-      - POSTGRES_DB=telegram
-      - POSTGRES_USER=telegram
-      - POSTGRES_PASSWORD=telegram
+      - DB_NAME=telegram
+      - DB_USER=telegram
+      - DB_PASS=telegram
     volumes:
       - /srv/docker/postgresql:/var/lib/postgresql
     networks:
