@@ -5,6 +5,8 @@ version: '3'
 services:
   connector:
     build: ./telegram-connector
+    environment:
+      TOKEN=1052831284:AAFhNUColiG4mn0q57qyvePH19M8JsVtMwM
     networks:
       connector-distributor-network:
         aliases:
