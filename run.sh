@@ -17,12 +17,12 @@ cd $WORKINGDIR/translateservice && git pull
 cd $WORKINGDIR/urlshortenerservice && git pull
 cd $WORKINGDIR/wikipediaservice git pull
 
-mvn -f $WORKINGDIR/telegram-connector/pom.xml package
-mvn -f $WORKINGDIR/distributionservice/pom.xml package
-mvn -f $WORKINGDIR/nordbahnservice/pom.xml package
-mvn -f $WORKINGDIR/weatherservice/pom.xml package
-mvn -f $WORKINGDIR/translateservice/pom.xml package
-mvn -f $WORKINGDIR/urlshortenerservice/pom.xml package
+mvn -f $WORKINGDIR/telegram-connector/pom.xml -Dmaven.test.skip=true package
+mvn -f $WORKINGDIR/distributionservice/pom.xml -Dmaven.test.skip=true package
+mvn -f $WORKINGDIR/nordbahnservice/pom.xml -Dmaven.test.skip=true package
+mvn -f $WORKINGDIR/weatherservice/pom.xml -Dmaven.test.skip=true package
+mvn -f $WORKINGDIR/translateservice/pom.xml -Dmaven.test.skip=true package
+mvn -f $WORKINGDIR/urlshortenerservice/pom.xml -Dmaven.test.skip=true package
 
 cp $WORKINGDIR/telegram-connector/docker-compose.yaml $WORKINGDIR/docker-compose.yaml
 
