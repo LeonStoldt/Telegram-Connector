@@ -1,3 +1,5 @@
+#note: copy this file to the parent directory of this folder in order to execute 'docker compose up'
+
 version: '3'
 
 services:
@@ -47,9 +49,9 @@ services:
       - 5432:5432
     environment:
       - DEBUG=false
-      - DB_USER=Telegram
-      - DB_PASS=telegram
-      - DB_NAME=Telegram
+      - POSTGRES_DB=Telegram
+      - POSTGRES_USER=Telegram
+      - POSTGRES_PASSWORD=telegram
     volumes:
       - /srv/docker/postgresql:/var/lib/postgresql
     networks:
