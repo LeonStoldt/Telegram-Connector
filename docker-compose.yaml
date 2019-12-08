@@ -49,8 +49,8 @@ services:
       - 5432:5432
     environment:
       - DEBUG=false
-      - POSTGRES_DB=Telegram
-      - POSTGRES_USER=Telegram
+      - POSTGRES_DB=telegram
+      - POSTGRES_USER=telegram
       - POSTGRES_PASSWORD=telegram
     volumes:
       - /srv/docker/postgresql:/var/lib/postgresql
