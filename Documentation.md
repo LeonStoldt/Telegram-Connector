@@ -1,4 +1,3 @@
-
 <!-- # Hausarbeit Cloud Computing 
 > Gruppenmitglieder: Sebastian Lüders, Tim Rader, Leon Stoldt, Dominik Wilms  
 DECKBLATT
@@ -83,7 +82,8 @@ Viele Bahn Pendler nutzen die Nordbahn regelmäßig und viele davon sind Student
 Lange URLs sind gerade im mobilen Zeitalter ein Dorn im Auge. Sei es in Kommentaren, auf Blocks oder in Social Media Kanälen. Lange Links auf kleinem Display sind sehr umständlich und schlecht lesbar. Um nicht selbst einen solch nervenaufreibenden Link zu posten, hat MIA einen URL Shortener Service, der die "GooLNK.com" - API benutzt und gewünschte URLs kürzt.
 
 **Service Google Translator**
---> Seppels Job
+Ob unterwegs oder gerade bei einem Buch lesen ein Wort oder Satz nicht verstanden, braucht man meistens ein Wörterbuch. Wenn man jedoch gerade keins parat hat kann man von Sätzen bis Wörtern in diesem Service alles ins Deutsche übersetzen lassen. 
+
   ### Architekturskizze
   --> Leon Job (BILD + Text))
   
@@ -99,6 +99,14 @@ Ein Load Balancer weiß welcher Service auf welchen und wie vielen Container lä
 
 Das Spring Boot Framework bringt viel hilfreiche Klassenbibliotheken für die Java Plattform mit. Der Zugriff auf die Datenbank läuft über Spring Data. Mit unseren Services, die auf Java 11 (LTS) und Python 3.8 laufen, sind wir auf aktuellen Versionen unterwegs.Der Python Service nutzt Flask als Lightweight Web Applikation Framework. Die Java Anwendungen werden mittels Junit 5 getestet.
   
+  
+### Inwiefern ist unser Produkt skalierbar?
+Skalierbarkeit ist „die Fähigkeit, sich bedarfsweise ausdehnen und zusammenziehen zu können.“ (8) Jedes unserer Services können wir beliebig oft und viel in Docker-Containern hochfahren bzw. aufsetzen und mit unseren Telegram Chat-Bot verbinden. 
+„Unter Microservices versteht man Dienste, die jeweils eine kleine Aufgabe erfüllen.“ (9) Jede Microservice hat eine einfache bestimmt Funktion und der Anwender daraus ein Nutzen gewinnt. Jeder dieser Microservices ist isoliert von anderen Services und gibt somit die Möglichkeit jeden Microservice anders zu programmieren. Vorteil von solche Services ist die geringe Größe, die sich dadurch leicht und in relativ geringer Zeit programmieren lässt. 
+In unserem Beispiel arbeiten wir mit einem eigenen Chat-Bot, der auf Microservices zugreifen kann. Bei unserem Produkt sind alle Services für bestimmte Aufgaben bestimmt, wie in der Einleitung erzählt, beispielsweise: Wetterservice aufzurufen oder Bahn Informationen aufzurufen. Nicht nur die Lastenverteilung in unserem Bot ist wichtig, sondern auch die schnelle Ergänzung von weiteren Services zu unserem Bot ist bedeutend.  
+Bei uns ist die Erweiterbarkeit erleichtert, da wir jegliche Art von Services in beliebiger Programmiersprache schreiben können, ob Java, PHP oder sonstiges. Den selbstentwickelten Service in einem Docker-Container hochfahren und anhand einer Anleitung in dem Telegram Service einbinden. Microservices lassen sich somit unabhängig voneinander entwickeln und es können mehrere Gruppen an verschieden Funktionen arbeiten. 
+Vorteilhaft an so einer Architektur ist auch, dass wenn ein Service ausfällt, unser Gesamtprodukt nicht komplett abstürzt, sondern nur der einzelne Service nicht mehr erreichbar ist. Die anderen laufenden Services sind immer noch erreichbar und können somit weiterhin genutzt werden. 
+
 ### Anforderungserfüllung im Hinblick auf Skalierbarkeit / Erweiterbarkeit 
 Auf Anforderungserfüllungen einzeln eingehen 
   
@@ -156,6 +164,7 @@ Unsere Services laufen in einzelnen Containern.
  Trotzdem ist MIA für uns eine Hilfe im Alltag
 
 ### Quellen
+
 [^10]:[https://core.telegram.org/api#bot-api](https://core.telegram.org/api#bot-api)
 [^11]:[https://core.telegram.org/bots](https://core.telegram.org/bots)
 [^6]: [https://kubernetes.io/de/](https://kubernetes.io/de/)
@@ -163,3 +172,5 @@ Unsere Services laufen in einzelnen Containern.
 [^3]: [https://aws.amazon.com/de/containers/](https://aws.amazon.com/de/containers/)
 [^2]: [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)
 [^1]:https://telegram.org/blog/200-million
+8.	https://www.scaleuptech.com/de/blog/elastizitaet-und-skalierbarkeit-im-cloud-computing/
+9.	https://www.dev-insider.de/was-sind-microservices-a-634583/
