@@ -27,7 +27,7 @@ public class Controller {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
     private static final I18n USER_FEEDBACK = new I18n();
-    @Value("${distribution-url:http://distributor:8002/api}")
+    @Value("${distribution-url:http://distributor:8079/api}")
     private String distributionUrl;
 
     @Autowired
