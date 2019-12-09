@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: connector
+  name: connector
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: connector
+    spec:
+      containers:
+      - env:
+        - name: TOKEN
+          value: 1052831284:AAFhNUColiG4mn0q57qyvePH19M8JsVtMwM
+        image: cloud-fundamentals_connector
+        name: connector
+        resources: {}
+      restartPolicy: Always
+status: {}
