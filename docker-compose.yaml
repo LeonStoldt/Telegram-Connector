@@ -84,6 +84,7 @@ services:
 
   wikipedia:
     build: ./wikipediaservice
+    restart: on-failure
     depends_on:
       - distributor
     networks:
