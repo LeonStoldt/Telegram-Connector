@@ -28,7 +28,8 @@ mvn -f $WORKINGDIR/translateservice/pom.xml -Dmaven.test.skip=true package && \
 mvn -f $WORKINGDIR/urlshortenerservice/pom.xml -Dmaven.test.skip=true package && \
 
 cp $WORKINGDIR/telegram-connector/docker-compose.yaml $WORKINGDIR/docker-compose.yaml && \
+cp $WORKINGDIR/telegram-connector/nginx.conf $WORKINGDIR/nginx.conf && \
 
 cd $WORKINGDIR
 docker-compose down && \
-docker-compose up --build --force-recreate
+docker-compose up --build --force-recreate  --scale distributor=10 --scale nordbahn=5 --scale translate=5 --scale urlshortener=5 --scale wikipedia=5 --scale weather=5 --scale mariadb=5

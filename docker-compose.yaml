@@ -10,10 +10,12 @@ services:
     networks:
       connector-distributor-network:
         aliases:
-            - connector
+          - connector
 
   distributor:
     build: ./distributionservice
+    environment:
+      - SERVICE_PORTS=8079
     depends_on:
       - connector
       - postgres
@@ -54,6 +56,21 @@ services:
       distributor-private-network:
         aliases:
           - postgres
+
+  proxy:
+    image: dockercloud/haproxy
+    depends_on:
+      - distributor
+    environment:
+      - BALANCE=leastconn
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    networks:
+      connector-distributor-network:
+        aliases:
+          - proxy
 
   nordbahn:
     build: ./nordbahnservice
