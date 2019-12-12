@@ -1,4 +1,5 @@
 #!/bin/sh
+# Important! You need to copy this file to the parent folder of this project to run it successfully.
 WORKINGDIR=$(pwd)
 
 git config --global credential.helper cache
@@ -28,7 +29,7 @@ mvn -f $WORKINGDIR/translateservice/pom.xml -Dmaven.test.skip=true package && \
 mvn -f $WORKINGDIR/urlshortenerservice/pom.xml -Dmaven.test.skip=true package && \
 
 cp $WORKINGDIR/telegram-connector/docker-compose.yaml $WORKINGDIR/docker-compose.yaml && \
-cp $WORKINGDIR/telegram-connector/nginx.conf $WORKINGDIR/nginx.conf && \
+cp $WORKINGDIR/telegram-connector/haproxy.cfg $WORKINGDIR/haproxy.cfg && \
 
 cd $WORKINGDIR
 docker-compose down && \

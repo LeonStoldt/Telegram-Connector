@@ -14,8 +14,6 @@ services:
 
   distributor:
     build: ./distributionservice
-    environment:
-      - SERVICE_PORTS=8079
     depends_on:
       - connector
       - postgres
@@ -58,15 +56,13 @@ services:
           - postgres
 
   proxy:
-    image: dockercloud/haproxy
+    image: haproxy:1.7
     depends_on:
       - distributor
-    environment:
-      - BALANCE=leastconn
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     ports:
-      - 80:80
+      - "4003:4003/tcp"
     networks:
       connector-distributor-network:
         aliases:
