@@ -1,13 +1,5 @@
 # Telegram Bot
 
-> Unser Bot: [http://t.me/MyIndividualAssistentBot](http://t.me/MyIndividualAssistentBot)
->
-> Username: `@MyIndividualAssistantBot`
-> 
-> Anzeigename: `Mia`
->
-> [![MIA](https://shaunthesheep.s3.amazonaws.com/character_lula_1_3.png)](https://shaunthesheep.s3.amazonaws.com/character_lula_1_3.png)
-
 ## Telegram Connector (Master)
 
 ### Was für Aufgaben hat der Telegram Connector?
@@ -20,13 +12,12 @@
 ### Welche Technologie wird verwendet?
 -	Spring (-Boot)
 -	Java 11
--	JUnit
 
 ### Was ist beim Einrichten des Telegram Connectors zu beachten?
 -	Damit die Telegram API benutzt werden kann wird ein Token benötigt
 -	Dieses Token wird aktuell über die Umgebungsvariablen hereingegeben
 -	In den Environment Variables also folgenden Eintrag hinzufügen: TOKEN=`ENTER TOKEN HERE`
--	Das Token ist in der Docker compose file als Umgebungsvariable zu finden
+-	Das Token ist beim BotFather von Telegram zu finden
 
 ## Kommunikationsstandard der Microservices
 
@@ -47,7 +38,7 @@
 ``` json
 {  
   Moin Sebastian!
-  Ich bin Mia, deine individuale Assistentin für alltägliche Probleme.
+  Ich bin dein individueller Assistent für alltägliche Probleme.
   Es freut mich sehr, dass du meine Funktionen in Anspruch nehmen möchtest.
   Mithilfe des Kommandos '/hilfe' erzähle ich dir alles über meine bisherigen Funktionen.
   Ich wünsche dir viel Spaß und hoffe, du schreibst mir schon bald.
@@ -55,13 +46,3 @@
 ```
 
 Die Antwort kommt direkt als Nachricht zurück, sodass sie direkt an den User weitergeleitet werden kann.
-
-## Weitere Ideen:
--	Admin Panel (`offen`)
--	[Tankpreise]([https://creativecommons.tankerkoenig.de/](https://creativecommons.tankerkoenig.de/)) (**Tim**)
--	[Deutsche Bahn]([https://developer.deutschebahn.com/store/](https://developer.deutschebahn.com/store/)) (**Dominik und Leon**)
-
-> NLP - Prüfen, ob Features in dem Bereich NLP interessant sind.
-> -	https://rapidapi.com/systran/api/systran-io-translation-and-nlp
-> -	https://dialogflow.com/
-> -	https://wit.ai/	
