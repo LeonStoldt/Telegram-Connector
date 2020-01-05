@@ -16,7 +16,7 @@ git clone https://github.com/LeonStoldt/Wikipedia-Service.git
 cd $WORKINGDIR/Telegram-Connector && git pull && \
 cd $WORKINGDIR/Distribution-Service && git pull && \
 cd $WORKINGDIR/Nordbahn-Service && git pull && \
-cd $WORKINGDIR/WeatherS-ervice && git pull && \
+cd $WORKINGDIR/Weather-Service && git pull && \
 cd $WORKINGDIR/Translate-Service && git pull && \
 cd $WORKINGDIR/URL-Shortener-Service && git pull  && \
 cd $WORKINGDIR/Wikipedia-Service git pull && \

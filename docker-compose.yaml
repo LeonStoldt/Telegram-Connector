@@ -4,7 +4,7 @@ version: '3'
 
 services:
   connector:
-    build: ./telegram-connector
+    build: ./Telegram-Connector
     environment:
       - TOKEN=[ENTER TOKEN HERE]
     networks:
@@ -13,7 +13,7 @@ services:
           - connector
 
   distributor:
-    build: ./distributionservice
+    build: ./Distribution-Service
     depends_on:
       - connector
       - postgres
@@ -69,7 +69,7 @@ services:
           - proxy
 
   nordbahn:
-    build: ./nordbahnservice
+    build: ./Nordbahn-Service
     depends_on:
       - distributor
     networks:
@@ -78,7 +78,7 @@ services:
           - nordbahn
 
   translate:
-    build: ./translateservice
+    build: ./Translate-Service
     depends_on:
       - distributor
     networks:
@@ -87,7 +87,7 @@ services:
           - translate
 
   urlshortener:
-    build: ./urlshortenerservice
+    build: ./URL-Shortener-Service
     depends_on:
       - distributor
     networks:
@@ -96,7 +96,7 @@ services:
           - urlshortener
 
   wikipedia:
-    build: ./wikipediaservice
+    build: ./Wikipedia-Service
     restart: on-failure
     depends_on:
       - distributor
@@ -106,7 +106,7 @@ services:
           - wikipedia
 
   weather:
-    build: ./weatherservice
+    build: ./Weather-Service
     depends_on:
       - distributor
       - mariadb
